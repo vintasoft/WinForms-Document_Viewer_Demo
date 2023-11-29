@@ -1,92 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9B458E50-14A3-4EC4-8D41-F2FF294A3D88}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DocumentViewerDemo</RootNamespace>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>  
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <Version>12.3.0.1</Version>
     <AssemblyName>DocumentViewerDemo</AssemblyName>
+    <RootNamespace>DocumentViewerDemo</RootNamespace>
+    <StartupObject>DocumentViewerDemo.Program</StartupObject>
     <ApplicationIcon>App.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
+    <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE; DEBUG</DefineConstants>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>false</Optimize>
-    <Prefer32Bit>false</Prefer32Bit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>NETCORE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <DebugType>pdbonly</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>true</Optimize>
-    <Prefer32Bit>false</Prefer32Bit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>NETCORE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE; DEBUG</DefineConstants>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>false</Optimize>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <DebugType>pdbonly</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>true</Optimize>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <PlatformTarget>x64</PlatformTarget>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE; DEBUG</DefineConstants>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>false</Optimize>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-    <PlatformTarget>x64</PlatformTarget>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <DebugType>pdbonly</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>true</Optimize>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+    <PackageReference Include="System.IO.Packaging" Version="8.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+  
   <ItemGroup>
     <Reference Include="Jint.Vintasoft">
-      <HintPath>.\Jint.Vintasoft\DotNet4\Jint.Vintasoft.dll</HintPath>
+      <HintPath>.\Jint.Vintasoft\DotNet8\Jint.Vintasoft.dll</HintPath>
     </Reference>
     <Reference Include="NHunspell">
-      <HintPath>.\NHunspell\DotNet4\NHunspell.dll</HintPath>
+      <HintPath>.\NHunspell\DotNet8\NHunspell.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <PackageReference Include="Vintasoft.Imaging" Version="12.3.0.1" />
     <PackageReference Include="Vintasoft.Imaging.Gdi" Version="12.3.0.1" />
     <PackageReference Include="Vintasoft.Imaging.Annotation" Version="12.3.0.1" />
@@ -109,6 +65,7 @@
     <PackageReference Include="Vintasoft.Imaging.UI" Version="12.3.0.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.1.0.1" />
     <PackageReference Include="Vintasoft.Twain" Version="14.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="12.3.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControls\AnchorTypeEditorControl.cs">
@@ -1268,11 +1225,19 @@
     <Content Include="DemosCommonCode.Office\OfficeDocumentVisualEditorToolStrip\Icons\UnderlinedText.png">
     </Content>
     <Content Include="App.ico" />
-    <Content Include="Resources\DotNet4\VintasoftTwainService.exe">
+    <Content Include="Resources\DotNet8\VintasoftTwainService.exe">
       <Link>VintasoftTwainService.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DotNet8\VintasoftTwainService.dll">
+      <Link>VintasoftTwainService.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DotNet8\VintasoftTwainService.runtimeconfig.json">
+      <Link>VintasoftTwainService.runtimeconfig.json</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="directives.txt" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  
 </Project>

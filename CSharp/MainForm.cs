@@ -131,16 +131,10 @@ namespace DocumentViewerDemo
         /// </summary>
         DocumentNavigationTool _navigationTool;
 
-
         /// <summary>
         /// List of initialized annotations.
         /// </summary>
         List<AnnotationData> _initializedAnnotations = new List<AnnotationData>();
-
-        /// <summary>
-        /// Focused annotation.
-        /// </summary>
-        AnnotationData _focusedAnnotationData = null;
 
         /// <summary>
         /// Determines that annotation transforming is started.
@@ -244,6 +238,8 @@ namespace DocumentViewerDemo
 
             InitImageDisplayMode();
 
+            InitImageScaleMode();
+
             InitUndoManager();
 
             InitImagesManager();
@@ -325,9 +321,6 @@ namespace DocumentViewerDemo
             annotationViewer1.Images.ImageSavingException += new EventHandler<ExceptionEventArgs>(Images_ImageSavingException);
 
             InitPrintManager();
-
-            // remember current image scale mode
-            _imageScaleModeSelectedMenuItem = bestFitToolStripMenuItem;
 
             // initialize color management in viewer
             ColorManagementHelper.EnableColorManagement(annotationViewer1);
@@ -596,6 +589,27 @@ namespace DocumentViewerDemo
             singleContinuousColumnToolStripMenuItem.Tag = ImageViewerDisplayMode.SingleContinuousColumn;
             twoContinuousRowsToolStripMenuItem.Tag = ImageViewerDisplayMode.TwoContinuousRows;
             twoContinuousColumnsToolStripMenuItem.Tag = ImageViewerDisplayMode.TwoContinuousColumns;
+        }
+
+        /// <summary>
+        /// Initializes image scale mode menu.
+        /// </summary>
+        private void InitImageScaleMode()
+        {
+            // init "View => Image Scale Mode" menu
+            normalImageToolStripMenuItem.Tag = ImageSizeMode.Normal;
+            bestFitToolStripMenuItem.Tag = ImageSizeMode.BestFit;
+            fitToWidthToolStripMenuItem.Tag = ImageSizeMode.FitToWidth;
+            fitToHeightToolStripMenuItem.Tag = ImageSizeMode.FitToHeight;
+            pixelToPixelToolStripMenuItem.Tag = ImageSizeMode.PixelToPixel;
+            scaleToolStripMenuItem.Tag = ImageSizeMode.Zoom;
+            scale25ToolStripMenuItem.Tag = 25;
+            scale50ToolStripMenuItem.Tag = 50;
+            scale100ToolStripMenuItem.Tag = 100;
+            scale200ToolStripMenuItem.Tag = 200;
+            scale400ToolStripMenuItem.Tag = 400;
+            _imageScaleModeSelectedMenuItem = bestFitToolStripMenuItem;
+            _imageScaleModeSelectedMenuItem.Checked = true;
         }
 
         /// <summary>
@@ -1560,55 +1574,28 @@ namespace DocumentViewerDemo
         /// </summary>
         private void imageSizeMode_Click(object sender, EventArgs e)
         {
-            // disable previously checked menu
+            scaleToolStripMenuItem.Checked = false;
             _imageScaleModeSelectedMenuItem.Checked = false;
+            _imageScaleModeSelectedMenuItem = (ToolStripMenuItem)sender;
 
-            //
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            switch (item.Text)
+            // if the menu item sets the ImageSizeMode
+            if (_imageScaleModeSelectedMenuItem.Tag is ImageSizeMode)
             {
-                case "Normal":
-                    annotationViewer1.SizeMode = ImageSizeMode.Normal;
-                    break;
-                case "Best fit":
-                    annotationViewer1.SizeMode = ImageSizeMode.BestFit;
-                    break;
-                case "Fit to width":
-                    annotationViewer1.SizeMode = ImageSizeMode.FitToWidth;
-                    break;
-                case "Fit to height":
-                    annotationViewer1.SizeMode = ImageSizeMode.FitToHeight;
-                    break;
-                case "Pixel to Pixel":
-                    annotationViewer1.SizeMode = ImageSizeMode.PixelToPixel;
-                    break;
-                case "Scale":
-                    annotationViewer1.SizeMode = ImageSizeMode.Zoom;
-                    break;
-                case "25%":
-                    annotationViewer1.SizeMode = ImageSizeMode.Zoom;
-                    annotationViewer1.Zoom = 25;
-                    break;
-                case "50%":
-                    annotationViewer1.SizeMode = ImageSizeMode.Zoom;
-                    annotationViewer1.Zoom = 50;
-                    break;
-                case "100%":
-                    annotationViewer1.SizeMode = ImageSizeMode.Zoom;
-                    annotationViewer1.Zoom = 100;
-                    break;
-                case "200%":
-                    annotationViewer1.SizeMode = ImageSizeMode.Zoom;
-                    annotationViewer1.Zoom = 200;
-                    break;
-                case "400%":
-                    annotationViewer1.SizeMode = ImageSizeMode.Zoom;
-                    annotationViewer1.Zoom = 400;
-                    break;
+                // set size mode
+                annotationViewer1.SizeMode = (ImageSizeMode)_imageScaleModeSelectedMenuItem.Tag;
+                _imageScaleModeSelectedMenuItem.Checked = true;
             }
-
-            _imageScaleModeSelectedMenuItem = item;
-            _imageScaleModeSelectedMenuItem.Checked = true;
+            // if the menu item sets the zoom
+            else
+            {
+                // get zoom value
+                int zoomValue = (int)_imageScaleModeSelectedMenuItem.Tag;
+                // set ImageSizeMode as Zoom
+                annotationViewer1.SizeMode = ImageSizeMode.Zoom;
+                // set zoom value
+                annotationViewer1.Zoom = zoomValue;
+                scaleToolStripMenuItem.Checked = true;
+            }
         }
 
         /// <summary>
@@ -2801,110 +2788,7 @@ namespace DocumentViewerDemo
 
 
         #region Annotation
-
-        /// <summary>
-        /// Focused annotation is changed in annotation viewer.
-        /// </summary>
-        private void annotationViewer1_FocusedAnnotationViewChanged(
-            object sender,
-            AnnotationViewChangedEventArgs e)
-        {
-            if (e.OldValue != null)
-            {
-                AnnotationData oldValue = e.OldValue.Data;
-                while (oldValue is CompositeAnnotationData)
-                {
-                    CompositeAnnotationData compositeData = (CompositeAnnotationData)oldValue;
-
-                    if (compositeData is StickyNoteAnnotationData)
-                    {
-                        compositeData.PropertyChanged -= new EventHandler<ObjectPropertyChangedEventArgs>(compositeData_PropertyChanged);
-                    }
-
-                    foreach (AnnotationData data in compositeData)
-                    {
-                        oldValue = data;
-                        break;
-                    }
-                }
-                oldValue.PropertyChanged -= new EventHandler<ObjectPropertyChangedEventArgs>(FocusedAnnotationData_PropertyChanged);
-            }
-            if (e.NewValue != null)
-            {
-                AnnotationData newValue = e.NewValue.Data;
-                while (newValue is CompositeAnnotationData)
-                {
-                    CompositeAnnotationData compositeData = (CompositeAnnotationData)newValue;
-
-                    if (compositeData is StickyNoteAnnotationData)
-                    {
-                        compositeData.PropertyChanged += new EventHandler<ObjectPropertyChangedEventArgs>(compositeData_PropertyChanged);
-                    }
-
-                    foreach (AnnotationData data in compositeData)
-                    {
-                        newValue = data;
-                        break;
-                    }
-                }
-                newValue.PropertyChanged += new EventHandler<ObjectPropertyChangedEventArgs>(FocusedAnnotationData_PropertyChanged);
-                // save information about last focused annotation
-                _focusedAnnotationData = newValue;
-            }
-        }
-
-        /// <summary>
-        /// The focused annotation property is changed.
-        /// </summary>
-        private void FocusedAnnotationData_PropertyChanged(
-            object sender,
-            ObjectPropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "Location" && annotationViewer1.SelectedAnnotations.Count > 1)
-            {
-                AnnotationView focusedView = annotationViewer1.AnnotationVisualTool.FocusedAnnotationView;
-                if (focusedView != null && focusedView.InteractionController != null)
-                {
-                    InteractionArea focusedArea = focusedView.InteractionController.FocusedInteractionArea;
-                    if (focusedArea != null && focusedArea.InteractionName == "Move")
-                    {
-                        System.Drawing.PointF oldValue = (System.Drawing.PointF)e.OldValue;
-                        System.Drawing.PointF newValue = (System.Drawing.PointF)e.NewValue;
-                        System.Drawing.PointF locationDelta = new System.Drawing.PointF(newValue.X - oldValue.X, newValue.Y - oldValue.Y);
-                        AnnotationData[] annotations = new AnnotationData[annotationViewer1.SelectedAnnotations.Count];
-                        for (int i = 0; i < annotationViewer1.SelectedAnnotations.Count; i++)
-                            annotations[i] = annotationViewer1.SelectedAnnotations[i].Data;
-                        AnnotationDemosTools.ChangeAnnotationsLocation(locationDelta, annotations, (AnnotationData)sender);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Composite data property is changed.
-        /// </summary>
-        private void compositeData_PropertyChanged(object sender, ObjectPropertyChangedEventArgs e)
-        {
-            StickyNoteAnnotationData stickyNote = sender as StickyNoteAnnotationData;
-            if (stickyNote != null)
-            {
-                if (e.PropertyName == "CollapsedType" || e.PropertyName == "IsCollapsed")
-                {
-                    if (_focusedAnnotationData != null)
-                    {
-                        _focusedAnnotationData.PropertyChanged -= new EventHandler<ObjectPropertyChangedEventArgs>(FocusedAnnotationData_PropertyChanged);
-                    }
-
-                    foreach (AnnotationData data in stickyNote)
-                    {
-                        _focusedAnnotationData = data;
-                        _focusedAnnotationData.PropertyChanged += new EventHandler<ObjectPropertyChangedEventArgs>(FocusedAnnotationData_PropertyChanged);
-                        break;
-                    }
-                }
-            }
-        }
-
+    
         /// <summary>
         /// Begins initialization of the specified annotation.
         /// </summary>

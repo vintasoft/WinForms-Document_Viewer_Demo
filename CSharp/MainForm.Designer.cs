@@ -1333,6 +1333,7 @@ namespace DocumentViewerDemo
             // 
             // annotationViewer1
             // 
+            this.annotationViewer1.AllowMoveSelectedAnnotations = true;
             this.annotationViewer1.AnnotationAuthorContextMenuStrip = null;
             this.annotationViewer1.AnnotationBoundingRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.annotationViewer1.AnnotationViewContextMenuStrip = null;
@@ -1357,7 +1358,6 @@ namespace DocumentViewerDemo
             this.annotationViewer1.SizeMode = Vintasoft.Imaging.UI.ImageSizeMode.BestFit;
             this.annotationViewer1.TabIndex = 5;
             this.annotationViewer1.Text = "annotationViewer1";
-            this.annotationViewer1.FocusedAnnotationViewChanged += new System.EventHandler<Vintasoft.Imaging.Annotation.UI.AnnotationViewChangedEventArgs>(this.annotationViewer1_FocusedAnnotationViewChanged);
             this.annotationViewer1.AnnotationTransformingStarted += new System.EventHandler<Vintasoft.Imaging.Annotation.UI.VisualTools.AnnotationViewEventArgs>(this.annotationViewer1_AnnotationTransformingStarted);
             this.annotationViewer1.AnnotationTransformingFinished += new System.EventHandler<Vintasoft.Imaging.Annotation.UI.VisualTools.AnnotationViewEventArgs>(this.annotationViewer1_AnnotationTransformingFinished);
             this.annotationViewer1.ImageLoading += new System.EventHandler<Vintasoft.Imaging.ImageLoadingEventArgs>(this.annotationViewer1_ImageLoading);
