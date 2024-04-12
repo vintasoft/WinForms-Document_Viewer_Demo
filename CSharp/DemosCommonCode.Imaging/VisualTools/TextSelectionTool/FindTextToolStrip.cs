@@ -192,7 +192,7 @@ namespace DemosCommonCode.Imaging
         #region UI
 
         /// <summary>
-        /// Handles the KeyDown event of FastFindToolStripComboBox object.
+        /// Handles the KeyDown event of fastFindToolStripComboBox object.
         /// </summary>
         private void fastFindToolStripComboBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -202,7 +202,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the Click event of FastFindNextToolStripButton object.
+        /// Handles the Click event of fastFindNextToolStripButton object.
         /// </summary>
         private void fastFindNextToolStripButton_Click(object sender, EventArgs e)
         {
@@ -211,7 +211,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the Click event of StopFastFindToolStripButton object.
+        /// Handles the Click event of stopFastFindToolStripButton object.
         /// </summary>
         private void stopFastFindToolStripButton_Click(object sender, EventArgs e)
         {
@@ -392,7 +392,7 @@ namespace DemosCommonCode.Imaging
 
 
         /// <summary>
-        /// Handles the Click event of FindTextToolStripButton object.
+        /// Handles the Click event of findTextToolStripButton object.
         /// </summary>
         private void findTextToolStripButton_Click(object sender, EventArgs e)
         {

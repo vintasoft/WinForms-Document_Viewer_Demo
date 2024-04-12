@@ -54,6 +54,8 @@ namespace DocumentViewerDemo
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pageSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pageAutoOrientationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.centerPrintingPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -177,6 +179,13 @@ namespace DocumentViewerDemo
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.annotationViewer1 = new Vintasoft.Imaging.Annotation.UI.AnnotationViewer();
+            this.annotationMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyAnnotationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteAnnotationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAnnotationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
+            this.bringToBackToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bringToFrontToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolsTabControl = new System.Windows.Forms.TabControl();
             this.pagesTabPage = new System.Windows.Forms.TabPage();
@@ -214,8 +223,6 @@ namespace DocumentViewerDemo
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.centerPrintingPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pageAutoOrientationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -247,7 +254,7 @@ namespace DocumentViewerDemo
             this.helpToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(376, 24);
+            this.mainMenu.Size = new System.Drawing.Size(256, 24);
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -350,6 +357,20 @@ namespace DocumentViewerDemo
             this.pageSettingsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.pageSettingsToolStripMenuItem.Text = "Page Settings...";
             this.pageSettingsToolStripMenuItem.Click += new System.EventHandler(this.pageSettingsToolStripMenuItem_Click);
+            // 
+            // pageAutoOrientationToolStripMenuItem
+            // 
+            this.pageAutoOrientationToolStripMenuItem.Name = "pageAutoOrientationToolStripMenuItem";
+            this.pageAutoOrientationToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.pageAutoOrientationToolStripMenuItem.Text = "Page Auto Orientation";
+            this.pageAutoOrientationToolStripMenuItem.Click += new System.EventHandler(this.pageAutoOrientationToolStripMenuItem_Click);
+            // 
+            // centerPrintingPageToolStripMenuItem
+            // 
+            this.centerPrintingPageToolStripMenuItem.Name = "centerPrintingPageToolStripMenuItem";
+            this.centerPrintingPageToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.centerPrintingPageToolStripMenuItem.Text = "Center Page";
+            this.centerPrintingPageToolStripMenuItem.Click += new System.EventHandler(this.centerPrintingPageToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
@@ -1334,7 +1355,7 @@ namespace DocumentViewerDemo
             // annotationViewer1
             // 
             this.annotationViewer1.AllowMoveSelectedAnnotations = true;
-            this.annotationViewer1.AnnotationAuthorContextMenuStrip = null;
+            this.annotationViewer1.AnnotationAuthorContextMenuStrip = this.annotationMenu;
             this.annotationViewer1.AnnotationBoundingRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.annotationViewer1.AnnotationViewContextMenuStrip = null;
             this.annotationViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1364,6 +1385,58 @@ namespace DocumentViewerDemo
             this.annotationViewer1.ImageLoadingProgress += new System.EventHandler<Vintasoft.Imaging.ProgressEventArgs>(this.annotationViewer1_ImageLoadingProgress);
             this.annotationViewer1.ImageLoaded += new System.EventHandler<Vintasoft.Imaging.ImageLoadedEventArgs>(this.annotationViewer1_ImageLoaded);
             this.annotationViewer1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.annotationViewer1_KeyDown);
+            // 
+            // annotationMenu
+            // 
+            this.annotationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyAnnotationToolStripMenuItem,
+            this.pasteAnnotationToolStripMenuItem,
+            this.deleteAnnotationToolStripMenuItem,
+            this.toolStripSeparator20,
+            this.bringToBackToolStripMenuItem1,
+            this.bringToFrontToolStripMenuItem1});
+            this.annotationMenu.Name = "annotationMenu";
+            this.annotationMenu.Size = new System.Drawing.Size(169, 120);
+            // 
+            // copyAnnotationToolStripMenuItem
+            // 
+            this.copyAnnotationToolStripMenuItem.Name = "copyAnnotationToolStripMenuItem";
+            this.copyAnnotationToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.copyAnnotationToolStripMenuItem.Text = "Copy annotation";
+            this.copyAnnotationToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // pasteAnnotationToolStripMenuItem
+            // 
+            this.pasteAnnotationToolStripMenuItem.Name = "pasteAnnotationToolStripMenuItem";
+            this.pasteAnnotationToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.pasteAnnotationToolStripMenuItem.Text = "Paste annotation";
+            this.pasteAnnotationToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            // 
+            // deleteAnnotationToolStripMenuItem
+            // 
+            this.deleteAnnotationToolStripMenuItem.Name = "deleteAnnotationToolStripMenuItem";
+            this.deleteAnnotationToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.deleteAnnotationToolStripMenuItem.Text = "Delete annotation";
+            this.deleteAnnotationToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            this.toolStripSeparator20.Size = new System.Drawing.Size(165, 6);
+            // 
+            // bringToBackToolStripMenuItem1
+            // 
+            this.bringToBackToolStripMenuItem1.Name = "bringToBackToolStripMenuItem1";
+            this.bringToBackToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
+            this.bringToBackToolStripMenuItem1.Text = "Bring to back";
+            this.bringToBackToolStripMenuItem1.Click += new System.EventHandler(this.bringToBackToolStripMenuItem_Click);
+            // 
+            // bringToFrontToolStripMenuItem1
+            // 
+            this.bringToFrontToolStripMenuItem1.Name = "bringToFrontToolStripMenuItem1";
+            this.bringToFrontToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
+            this.bringToFrontToolStripMenuItem1.Text = "Bring to front";
+            this.bringToFrontToolStripMenuItem1.Click += new System.EventHandler(this.bringToFrontToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -1754,20 +1827,6 @@ namespace DocumentViewerDemo
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // centerPrintingPageToolStripMenuItem
-            // 
-            this.centerPrintingPageToolStripMenuItem.Name = "centerPrintingPageToolStripMenuItem";
-            this.centerPrintingPageToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.centerPrintingPageToolStripMenuItem.Text = "Center Page";
-            this.centerPrintingPageToolStripMenuItem.Click += new System.EventHandler(this.centerPrintingPageToolStripMenuItem_Click);
-            // 
-            // pageAutoOrientationToolStripMenuItem
-            // 
-            this.pageAutoOrientationToolStripMenuItem.Name = "pageAutoOrientationToolStripMenuItem";
-            this.pageAutoOrientationToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.pageAutoOrientationToolStripMenuItem.Text = "Page Auto Orientation";
-            this.pageAutoOrientationToolStripMenuItem.Click += new System.EventHandler(this.pageAutoOrientationToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1987,5 +2046,12 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ToolStripMenuItem pageAutoOrientationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem centerPrintingPageToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip annotationMenu;
+        private System.Windows.Forms.ToolStripMenuItem copyAnnotationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteAnnotationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteAnnotationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bringToBackToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
+        private System.Windows.Forms.ToolStripMenuItem bringToFrontToolStripMenuItem1;
     }
 }

@@ -115,7 +115,7 @@ namespace DemosCommonCode.Imaging
         #region UI
 
         /// <summary>
-        /// Handles the CheckedChanged event of SelectionModeRadioButton object.
+        /// Handles the CheckedChanged event of selectionModeRadioButton object.
         /// </summary>
         private void selectionModeRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -134,7 +134,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of FormattingModeRadioButton object.
+        /// Handles the CheckedChanged event of formattingModeRadioButton object.
         /// </summary>
         private void formattingModeRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -165,7 +165,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the Click event of CopyToolStripMenuItem object.
+        /// Handles the Click event of copyToolStripMenuItem object.
         /// </summary>
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -174,7 +174,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the Click event of SelectAllToolStripMenuItem object.
+        /// Handles the Click event of selectAllToolStripMenuItem object.
         /// </summary>
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -183,7 +183,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the Click event of SaveAsTextButton object.
+        /// Handles the Click event of saveAsTextButton object.
         /// </summary>
         private void saveAsTextButton_Click(object sender, EventArgs e)
         {
@@ -200,7 +200,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of MouseSelectionCheckBox object.
+        /// Handles the CheckedChanged event of mouseSelectionCheckBox object.
         /// </summary>
         private void mouseSelectionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -215,7 +215,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of KeyboardSelectionCheckBox object.
+        /// Handles the CheckedChanged event of keyboardSelectionCheckBox object.
         /// </summary>
         private void keyboardSelectionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -230,7 +230,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the ValueChanged event of CaretWidthNumericUpDown object.
+        /// Handles the ValueChanged event of caretWidthNumericUpDown object.
         /// </summary>
         private void caretWidthNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -240,7 +240,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the ValueChanged event of CaretBlinkingIntervalNumericUpDown object.
+        /// Handles the ValueChanged event of caretBlinkingIntervalNumericUpDown object.
         /// </summary>
         private void caretBlinkingIntervalNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -315,7 +315,7 @@ namespace DemosCommonCode.Imaging
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="VisualToolMouseEventArgs"/> instance containing the event data.</param>
-        private void selectionTool_MouseDown(object sender, VisualToolMouseEventArgs e)
+        private void selectionTool_MouseUp(object sender, VisualToolMouseEventArgs e)
         {
             if (Enabled && mainPanel.Enabled)
             {
@@ -406,7 +406,7 @@ namespace DemosCommonCode.Imaging
             selectionTool.SelectionChanged += new EventHandler(selectionTool_SelectionChanged);
             selectionTool.Activated += new EventHandler(selectionTool_Activated);
             selectionTool.Deactivated += new EventHandler(selectionTool_Deactivated);
-            selectionTool.MouseDown += new VisualToolMouseEventHandler(selectionTool_MouseDown);
+            selectionTool.MouseUp += new VisualToolMouseEventHandler(selectionTool_MouseUp);
             selectionTool.SelectionModeChanged += new PropertyChangedEventHandler<TextSelectionMode>(selectionTool_SelectionModeChanged);
             selectionTool.TextFormatterChanged += new PropertyChangedEventHandler<TextRegionFormatter>(selectionTool_TextFormatterChanged);
             selectionTool.FocusedTextSymbolChanged += new PropertyChangedEventHandler<TextRegionSymbol>(SelectionTool_FocusedTextSymbolChanged);
@@ -424,7 +424,7 @@ namespace DemosCommonCode.Imaging
             selectionTool.SelectionChanged -= selectionTool_SelectionChanged;
             selectionTool.Activated -= selectionTool_Activated;
             selectionTool.Deactivated -= selectionTool_Deactivated;
-            selectionTool.MouseDown -= selectionTool_MouseDown;
+            selectionTool.MouseUp -= selectionTool_MouseUp;
             selectionTool.SelectionModeChanged -= selectionTool_SelectionModeChanged;
             selectionTool.TextFormatterChanged -= selectionTool_TextFormatterChanged;
             selectionTool.FocusedTextSymbolChanged -= SelectionTool_FocusedTextSymbolChanged;

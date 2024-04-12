@@ -997,7 +997,7 @@ namespace DocumentViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of DocxLayoutSettingsToolStripMenuItem object.
+        /// Handles the Click event of docxLayoutSettingsToolStripMenuItem object.
         /// </summary>
         private void docxLayoutSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1005,7 +1005,7 @@ namespace DocumentViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of XlsxLayoutSettingsToolStripMenuItem object.
+        /// Handles the Click event of xlsxLayoutSettingsToolStripMenuItem object.
         /// </summary>
         private void xlsxLayoutSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1050,7 +1050,7 @@ namespace DocumentViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of PageAutoOrientationToolStripMenuItem object.
+        /// Handles the Click event of pageAutoOrientationToolStripMenuItem object.
         /// </summary>
         private void pageAutoOrientationToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1059,7 +1059,7 @@ namespace DocumentViewerDemo
             pageAutoOrientationToolStripMenuItem.Checked = value;
         }
         /// <summary>
-        /// Handles the Click event of CenterPrintingPageToolStripMenuItem object.
+        /// Handles the Click event of centerPrintingPageToolStripMenuItem object.
         /// </summary>
         private void centerPrintingPageToolStripMenuItem_Click(object sender, EventArgs e)
         {

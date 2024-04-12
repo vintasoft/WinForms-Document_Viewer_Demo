@@ -170,7 +170,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the TextChanged event of FindWhatComboBox object.
+        /// Handles the TextChanged event of findWhatComboBox object.
         /// </summary>
         private void findWhatComboBox_TextChanged(object sender, EventArgs e)
         {
@@ -182,7 +182,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the Click event of FindNextButton object.
+        /// Handles the Click event of findNextButton object.
         /// </summary>
         private void findNextButton_Click(object sender, EventArgs e)
         {
@@ -231,7 +231,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the Click event of StopButton object.
+        /// Handles the Click event of stopButton object.
         /// </summary>
         private void stopButton_Click(object sender, EventArgs e)
         {
@@ -250,7 +250,7 @@ namespace DemosCommonCode.Imaging
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of SearchUpCheckBox object.
+        /// Handles the CheckedChanged event of searchUpCheckBox object.
         /// </summary>
         private void searchUpCheckBox_CheckedChanged(object sender, EventArgs e)
         {
