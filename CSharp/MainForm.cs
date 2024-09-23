@@ -1619,16 +1619,8 @@ namespace DocumentViewerDemo
         /// </summary>
         private void RotateViewClockwise()
         {
-            if (annotationViewer1.ImageRotationAngle != 270)
-            {
-                annotationViewer1.ImageRotationAngle += 90;
-                thumbnailViewer1.ImageRotationAngle += 90;
-            }
-            else
-            {
-                annotationViewer1.ImageRotationAngle = 0;
-                thumbnailViewer1.ImageRotationAngle = 0;
-            }
+            annotationViewer1.RotateViewClockwise();
+            thumbnailViewer1.RotateViewClockwise();
         }
 
         /// <summary>
@@ -1636,16 +1628,8 @@ namespace DocumentViewerDemo
         /// </summary>
         private void RotateViewCounterClockwise()
         {
-            if (annotationViewer1.ImageRotationAngle != 0)
-            {
-                annotationViewer1.ImageRotationAngle -= 90;
-                thumbnailViewer1.ImageRotationAngle -= 90;
-            }
-            else
-            {
-                annotationViewer1.ImageRotationAngle = 270;
-                thumbnailViewer1.ImageRotationAngle = 270;
-            }
+            annotationViewer1.RotateViewCounterClockwise();
+            thumbnailViewer1.RotateViewCounterClockwise();
         }
 
         /// <summary>
@@ -2071,6 +2055,52 @@ namespace DocumentViewerDemo
 
             // update the UI
             UpdateUI();
+        }
+
+        /// <summary>
+        /// Handles the Click event of rotateViewClockwiseToolStripMenuItem object.
+        /// </summary>
+        private void rotateViewClockwiseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (thumbnailViewer1.FocusedIndex == -1)
+                return;
+
+            VintasoftImage image = thumbnailViewer1.Images[thumbnailViewer1.FocusedIndex];
+
+            int rotationAngle = thumbnailViewer1.GetCustomViewRotationAngle(image);
+            if (rotationAngle == -1)
+                rotationAngle = 0;
+
+            if (rotationAngle != 270)
+                rotationAngle += 90;
+            else
+                rotationAngle = 0;
+
+            thumbnailViewer1.SetCustomViewRotationAngle(image, rotationAngle);
+            annotationViewer1.SetCustomViewRotationAngle(image, rotationAngle);
+        }
+
+        /// <summary>
+        /// Handles the Click event of rotateViewCounterclockwiseToolStripMenuItem object.
+        /// </summary>
+        private void rotateViewCounterclockwiseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (thumbnailViewer1.FocusedIndex == -1)
+                return;
+
+            VintasoftImage image = thumbnailViewer1.Images[thumbnailViewer1.FocusedIndex];
+
+            int rotationAngle = thumbnailViewer1.GetCustomViewRotationAngle(image);
+            if (rotationAngle == -1)
+                rotationAngle = 0;
+
+            if (rotationAngle != 0)
+                rotationAngle -= 90;
+            else
+                rotationAngle = 270;
+
+            thumbnailViewer1.SetCustomViewRotationAngle(image, rotationAngle);
+            annotationViewer1.SetCustomViewRotationAngle(image, rotationAngle);
         }
 
         #endregion
@@ -2788,7 +2818,7 @@ namespace DocumentViewerDemo
 
 
         #region Annotation
-    
+
         /// <summary>
         /// Begins initialization of the specified annotation.
         /// </summary>
@@ -3484,8 +3514,8 @@ namespace DocumentViewerDemo
 
         private delegate void SavingProgressDelegate(object sender, ProgressEventArgs e);
 
+
         #endregion
 
-      
     }
 }

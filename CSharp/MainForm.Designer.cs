@@ -223,7 +223,11 @@ namespace DocumentViewerDemo
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.rotateViewClockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotateViewCounterclockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
+            this.annotationMenu.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -1363,8 +1367,14 @@ namespace DocumentViewerDemo
             this.annotationViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.annotationViewer1.DisplayMode = Vintasoft.Imaging.UI.ImageViewerDisplayMode.SingleContinuousColumn;
             this.annotationViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.annotationViewer1.FastScrollingCursor = System.Windows.Forms.Cursors.SizeAll;
+            this.annotationViewer1.FastScrollingInterval = 10;
+            this.annotationViewer1.FastScrollingMinDistance = 5F;
+            this.annotationViewer1.FastScrollingMouseButton = System.Windows.Forms.MouseButtons.Middle;
+            this.annotationViewer1.FastScrollingScale = 0.5F;
             this.annotationViewer1.ImageRenderingSettings = renderingSettings1;
             this.annotationViewer1.ImageRotationAngle = 0;
+            this.annotationViewer1.IsFastScrollingEnabled = true;
             this.annotationViewer1.IsKeyboardNavigationEnabled = true;
             this.annotationViewer1.Location = new System.Drawing.Point(0, 0);
             this.annotationViewer1.MultipageDisplayMode = Vintasoft.Imaging.UI.ImageViewerMultipageDisplayMode.AllImages;
@@ -1489,6 +1499,11 @@ namespace DocumentViewerDemo
             this.thumbnailViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.thumbnailViewer1.Clipboard = winFormsSystemClipboard1;
             this.thumbnailViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.thumbnailViewer1.FastScrollingCursor = System.Windows.Forms.Cursors.SizeAll;
+            this.thumbnailViewer1.FastScrollingInterval = 10;
+            this.thumbnailViewer1.FastScrollingMinDistance = 5F;
+            this.thumbnailViewer1.FastScrollingMouseButton = System.Windows.Forms.MouseButtons.Middle;
+            this.thumbnailViewer1.FastScrollingScale = 0.5F;
             thumbnailAppearance1.BackColor = System.Drawing.Color.Transparent;
             thumbnailAppearance1.BorderColor = System.Drawing.Color.Gray;
             thumbnailAppearance1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dotted;
@@ -1501,6 +1516,7 @@ namespace DocumentViewerDemo
             thumbnailAppearance2.BorderWidth = 2;
             this.thumbnailViewer1.HoveredThumbnailAppearance = thumbnailAppearance2;
             this.thumbnailViewer1.ImageRotationAngle = 0;
+            this.thumbnailViewer1.IsFastScrollingEnabled = true;
             this.thumbnailViewer1.Location = new System.Drawing.Point(3, 3);
             this.thumbnailViewer1.MasterViewer = this.annotationViewer1;
             this.thumbnailViewer1.Name = "thumbnailViewer1";
@@ -1528,6 +1544,7 @@ namespace DocumentViewerDemo
             this.thumbnailViewer1.ThumbnailControlPadding = new Vintasoft.Imaging.PaddingF(0F, 0F, 0F, 0F);
             this.thumbnailViewer1.ThumbnailImagePadding = new Vintasoft.Imaging.PaddingF(0F, 0F, 0F, 0F);
             this.thumbnailViewer1.ThumbnailMargin = new System.Windows.Forms.Padding(3);
+            this.thumbnailViewer1.ThumbnailRenderingSettings = null;
             this.thumbnailViewer1.ThumbnailRenderingThreadCount = 4;
             this.thumbnailViewer1.ThumbnailSize = new System.Drawing.Size(128, 128);
             this.thumbnailViewer1.ThumbnailsLoadingProgress += new System.EventHandler<Vintasoft.Imaging.UI.ThumbnailsLoadingProgressEventArgs>(this.thumbnailViewer1_ThumbnailsLoadingProgress);
@@ -1539,9 +1556,12 @@ namespace DocumentViewerDemo
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
             this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
+            this.toolStripMenuItem4,
+            this.toolStripSeparator21,
+            this.rotateViewClockwiseToolStripMenuItem,
+            this.rotateViewCounterclockwiseToolStripMenuItem});
             this.thumbnailMenu.Name = "annoViewerMenu";
-            this.thumbnailMenu.Size = new System.Drawing.Size(236, 92);
+            this.thumbnailMenu.Size = new System.Drawing.Size(236, 164);
             // 
             // toolStripMenuItem1
             // 
@@ -1827,6 +1847,25 @@ namespace DocumentViewerDemo
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(232, 6);
+            // 
+            // rotateViewClockwiseToolStripMenuItem
+            // 
+            this.rotateViewClockwiseToolStripMenuItem.Name = "rotateViewClockwiseToolStripMenuItem";
+            this.rotateViewClockwiseToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.rotateViewClockwiseToolStripMenuItem.Text = "Rotate view clockwise";
+            this.rotateViewClockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateViewClockwiseToolStripMenuItem_Click);
+            // 
+            // rotateViewCounterclockwiseToolStripMenuItem
+            // 
+            this.rotateViewCounterclockwiseToolStripMenuItem.Name = "rotateViewCounterclockwiseToolStripMenuItem";
+            this.rotateViewCounterclockwiseToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.rotateViewCounterclockwiseToolStripMenuItem.Text = "Rotate view counterclockwise";
+            this.rotateViewCounterclockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateViewCounterclockwiseToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1843,6 +1882,7 @@ namespace DocumentViewerDemo
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
+            this.annotationMenu.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
@@ -2053,5 +2093,8 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.ToolStripMenuItem bringToBackToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripMenuItem bringToFrontToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripMenuItem rotateViewClockwiseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotateViewCounterclockwiseToolStripMenuItem;
     }
 }
