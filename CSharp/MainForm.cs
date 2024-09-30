@@ -3348,7 +3348,7 @@ namespace DocumentViewerDemo
         {
             if (InvokeRequired)
             {
-                Invoke(new SavingProgressDelegate(SavingProgress), sender, e);
+                BeginInvoke(new SavingProgressDelegate(SavingProgress), sender, e);
             }
             else
             {
