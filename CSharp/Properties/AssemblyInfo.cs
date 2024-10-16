@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VintaSoft Document Viewer Demo")]
 [assembly: AssemblyDescription("Shows how to annotate images and extract text from PDF, XLSX and DOCX documents.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("VintaSoft Ltd.")]
+[assembly: AssemblyCompany("VintaSoft Llc.")]
 [assembly: AssemblyProduct("VintaSoft Imaging .NET SDK")]
-[assembly: AssemblyCopyright("Copyright VintaSoft Ltd. 2024")]
+[assembly: AssemblyCopyright("Copyright VintaSoft Llc. 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
