@@ -345,16 +345,18 @@ namespace DocumentViewerDemo
             // init visual tools
             InitVisualToolsToolStrip();
 
-            DocumentPasswordForm.EnableAuthentication(annotationViewer1);
 
 #if !REMOVE_OFFICE_PLUGIN
             // specify that image collection of annotation viewer  must handle layout settings requests
             _imageCollectionDocxLayoutSettingsManager = new ImageCollectionDocxLayoutSettingsManager(annotationViewer1.Images);
             _imageCollectionXlsxLayoutSettingsManager = new ImageCollectionXlsxLayoutSettingsManager(annotationViewer1.Images);
-#else
+#endif
+
+#if REMOVE_OFFICE_PLUGIN
             documentLayoutSettingsToolStripMenuItem.Visible = false;
 #endif
 
+            DocumentPasswordForm.EnableAuthentication(annotationViewer1);
         }
 
         #endregion
