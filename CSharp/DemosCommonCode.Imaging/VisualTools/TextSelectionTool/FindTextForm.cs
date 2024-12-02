@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -85,6 +86,7 @@ namespace DemosCommonCode.Imaging
         /// <summary>
         /// Gets or sets a text to find.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FindWhat
         {
             get

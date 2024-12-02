@@ -47,6 +47,7 @@ namespace DemosCommonCode.Imaging
         /// <value>
         /// Default value is <b>null</b>.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public TextSelectionTool TextSelectionTool
         {
             get
@@ -94,6 +95,7 @@ namespace DemosCommonCode.Imaging
         /// <summary>
         /// Gets or sets the color that is used for highlighting the text.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color HighlightColor
         {
             get

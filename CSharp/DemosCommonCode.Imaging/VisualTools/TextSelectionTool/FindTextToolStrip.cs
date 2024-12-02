@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -91,6 +92,7 @@ namespace DemosCommonCode.Imaging
         /// <value>
         /// Default value is <b>null</b>.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public TextSelectionTool TextSelectionTool
         {
             get

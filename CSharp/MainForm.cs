@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -345,7 +346,6 @@ namespace DocumentViewerDemo
             // init visual tools
             InitVisualToolsToolStrip();
 
-
 #if !REMOVE_OFFICE_PLUGIN
             // specify that image collection of annotation viewer  must handle layout settings requests
             _imageCollectionDocxLayoutSettingsManager = new ImageCollectionDocxLayoutSettingsManager(annotationViewer1.Images);
@@ -369,6 +369,7 @@ namespace DocumentViewerDemo
         /// <summary>
         /// Gets or sets a value indicating whether file is opening.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal bool IsFileOpening
         {
             get
@@ -397,6 +398,7 @@ namespace DocumentViewerDemo
         /// <summary>
         /// Gets or sets a value indicating whether file is saving.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal bool IsFileSaving
         {
             get
@@ -418,6 +420,7 @@ namespace DocumentViewerDemo
         /// <summary>
         /// Gets or sets a value indicating whether text search is in progress.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal bool IsTextSearching
         {
             get
