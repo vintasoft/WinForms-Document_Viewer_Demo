@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -388,7 +388,7 @@ namespace DemosCommonCode.Imaging
                 text = _textSelectionTool.SelectedText;
 
             // copy text to clipboard
-            Clipboard.SetText(text, TextDataFormat.Text);
+            Clipboard.SetText(text, TextDataFormat.UnicodeText);
         }
 
         /// <summary>
