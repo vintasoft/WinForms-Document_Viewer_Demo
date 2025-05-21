@@ -32,8 +32,6 @@ namespace DocumentViewerDemo
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Vintasoft.Imaging.Utils.WinFormsSystemClipboard winFormsSystemClipboard1 = new Vintasoft.Imaging.Utils.WinFormsSystemClipboard();
-            Vintasoft.Imaging.Codecs.Decoders.RenderingSettings renderingSettings1 = new Vintasoft.Imaging.Codecs.Decoders.RenderingSettings();
             Vintasoft.Imaging.UI.ThumbnailAppearance thumbnailAppearance1 = new Vintasoft.Imaging.UI.ThumbnailAppearance();
             Vintasoft.Imaging.UI.ThumbnailAppearance thumbnailAppearance2 = new Vintasoft.Imaging.UI.ThumbnailAppearance();
             Vintasoft.Imaging.UI.ThumbnailAppearance thumbnailAppearance3 = new Vintasoft.Imaging.UI.ThumbnailAppearance();
@@ -150,7 +148,7 @@ namespace DocumentViewerDemo
             this.lineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linesWithInterpolationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.freehandLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.polygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.polygonWithInterpolationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.freehandPolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,6 +193,9 @@ namespace DocumentViewerDemo
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.rotateViewClockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotateViewCounterclockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textExtractionTabPage = new System.Windows.Forms.TabPage();
             this.textSelectionControl1 = new DemosCommonCode.Imaging.TextSelectionControl();
             this.annotationsTabPage = new System.Windows.Forms.TabPage();
@@ -223,9 +224,8 @@ namespace DocumentViewerDemo
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
-            this.rotateViewClockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotateViewCounterclockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.annotationEraserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pencilEraserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.annotationMenu.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -258,7 +258,7 @@ namespace DocumentViewerDemo
             this.helpToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(256, 24);
+            this.mainMenu.Size = new System.Drawing.Size(376, 24);
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -943,7 +943,9 @@ namespace DocumentViewerDemo
             this.interactionModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.noneToolStripMenuItem,
             this.viewToolStripMenuItem1,
-            this.authorToolStripMenuItem});
+            this.authorToolStripMenuItem,
+            this.annotationEraserToolStripMenuItem,
+            this.pencilEraserToolStripMenuItem});
             this.interactionModeToolStripMenuItem.Name = "interactionModeToolStripMenuItem";
             this.interactionModeToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.interactionModeToolStripMenuItem.Text = "Interaction Mode";
@@ -951,14 +953,14 @@ namespace DocumentViewerDemo
             // noneToolStripMenuItem
             // 
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem1
             // 
             this.viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
-            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
+            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.viewToolStripMenuItem1.Text = "View";
             this.viewToolStripMenuItem1.Click += new System.EventHandler(this.viewToolStripMenuItem1_Click);
             // 
@@ -967,7 +969,7 @@ namespace DocumentViewerDemo
             this.authorToolStripMenuItem.Checked = true;
             this.authorToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.authorToolStripMenuItem.Name = "authorToolStripMenuItem";
-            this.authorToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.authorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.authorToolStripMenuItem.Text = "Author";
             this.authorToolStripMenuItem.Click += new System.EventHandler(this.authorToolStripMenuItem_Click);
             // 
@@ -1044,7 +1046,7 @@ namespace DocumentViewerDemo
             this.lineToolStripMenuItem,
             this.linesToolStripMenuItem,
             this.linesWithInterpolationToolStripMenuItem,
-            this.freehandLinesToolStripMenuItem,
+            this.inkToolStripMenuItem,
             this.polygonToolStripMenuItem,
             this.polygonWithInterpolationToolStripMenuItem,
             this.freehandPolygonToolStripMenuItem,
@@ -1163,10 +1165,10 @@ namespace DocumentViewerDemo
             // 
             // freehandLinesToolStripMenuItem
             // 
-            this.freehandLinesToolStripMenuItem.Name = "freehandLinesToolStripMenuItem";
-            this.freehandLinesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.freehandLinesToolStripMenuItem.Text = "Freehand lines";
-            this.freehandLinesToolStripMenuItem.Click += new System.EventHandler(this.addAnnotationToolStripMenuItem_Click);
+            this.inkToolStripMenuItem.Name = "freehandLinesToolStripMenuItem";
+            this.inkToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.inkToolStripMenuItem.Text = "Freehand lines";
+            this.inkToolStripMenuItem.Click += new System.EventHandler(this.addAnnotationToolStripMenuItem_Click);
             // 
             // polygonToolStripMenuItem
             // 
@@ -1363,18 +1365,9 @@ namespace DocumentViewerDemo
             this.annotationViewer1.AnnotationBoundingRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.annotationViewer1.AnnotationViewContextMenuStrip = null;
             this.annotationViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.annotationViewer1.Clipboard = winFormsSystemClipboard1;
             this.annotationViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.annotationViewer1.DisplayMode = Vintasoft.Imaging.UI.ImageViewerDisplayMode.SingleContinuousColumn;
             this.annotationViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.annotationViewer1.FastScrollingCursor = System.Windows.Forms.Cursors.SizeAll;
-            this.annotationViewer1.FastScrollingInterval = 10;
-            this.annotationViewer1.FastScrollingMinDistance = 5F;
-            this.annotationViewer1.FastScrollingMouseButton = System.Windows.Forms.MouseButtons.Middle;
-            this.annotationViewer1.FastScrollingScale = 0.5F;
-            this.annotationViewer1.ImageRenderingSettings = renderingSettings1;
-            this.annotationViewer1.ImageRotationAngle = 0;
-            this.annotationViewer1.IsFastScrollingEnabled = true;
             this.annotationViewer1.IsKeyboardNavigationEnabled = true;
             this.annotationViewer1.Location = new System.Drawing.Point(0, 0);
             this.annotationViewer1.MultipageDisplayMode = Vintasoft.Imaging.UI.ImageViewerMultipageDisplayMode.AllImages;
@@ -1497,13 +1490,7 @@ namespace DocumentViewerDemo
             this.thumbnailViewer1.AutoScrollMinSize = new System.Drawing.Size(1, 1);
             this.thumbnailViewer1.BackColor = System.Drawing.SystemColors.Control;
             this.thumbnailViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.thumbnailViewer1.Clipboard = winFormsSystemClipboard1;
             this.thumbnailViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.thumbnailViewer1.FastScrollingCursor = System.Windows.Forms.Cursors.SizeAll;
-            this.thumbnailViewer1.FastScrollingInterval = 10;
-            this.thumbnailViewer1.FastScrollingMinDistance = 5F;
-            this.thumbnailViewer1.FastScrollingMouseButton = System.Windows.Forms.MouseButtons.Middle;
-            this.thumbnailViewer1.FastScrollingScale = 0.5F;
             thumbnailAppearance1.BackColor = System.Drawing.Color.Transparent;
             thumbnailAppearance1.BorderColor = System.Drawing.Color.Gray;
             thumbnailAppearance1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dotted;
@@ -1516,7 +1503,6 @@ namespace DocumentViewerDemo
             thumbnailAppearance2.BorderWidth = 2;
             this.thumbnailViewer1.HoveredThumbnailAppearance = thumbnailAppearance2;
             this.thumbnailViewer1.ImageRotationAngle = 0;
-            this.thumbnailViewer1.IsFastScrollingEnabled = true;
             this.thumbnailViewer1.Location = new System.Drawing.Point(3, 3);
             this.thumbnailViewer1.MasterViewer = this.annotationViewer1;
             this.thumbnailViewer1.Name = "thumbnailViewer1";
@@ -1544,7 +1530,6 @@ namespace DocumentViewerDemo
             this.thumbnailViewer1.ThumbnailControlPadding = new Vintasoft.Imaging.PaddingF(0F, 0F, 0F, 0F);
             this.thumbnailViewer1.ThumbnailImagePadding = new Vintasoft.Imaging.PaddingF(0F, 0F, 0F, 0F);
             this.thumbnailViewer1.ThumbnailMargin = new System.Windows.Forms.Padding(3);
-            this.thumbnailViewer1.ThumbnailRenderingSettings = null;
             this.thumbnailViewer1.ThumbnailRenderingThreadCount = 4;
             this.thumbnailViewer1.ThumbnailSize = new System.Drawing.Size(128, 128);
             this.thumbnailViewer1.ThumbnailsLoadingProgress += new System.EventHandler<Vintasoft.Imaging.UI.ThumbnailsLoadingProgressEventArgs>(this.thumbnailViewer1_ThumbnailsLoadingProgress);
@@ -1561,7 +1546,7 @@ namespace DocumentViewerDemo
             this.rotateViewClockwiseToolStripMenuItem,
             this.rotateViewCounterclockwiseToolStripMenuItem});
             this.thumbnailMenu.Name = "annoViewerMenu";
-            this.thumbnailMenu.Size = new System.Drawing.Size(236, 164);
+            this.thumbnailMenu.Size = new System.Drawing.Size(236, 142);
             // 
             // toolStripMenuItem1
             // 
@@ -1590,6 +1575,25 @@ namespace DocumentViewerDemo
             this.toolStripMenuItem4.Size = new System.Drawing.Size(235, 22);
             this.toolStripMenuItem4.Text = "Delete image(s)";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.deleteImageToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(232, 6);
+            // 
+            // rotateViewClockwiseToolStripMenuItem
+            // 
+            this.rotateViewClockwiseToolStripMenuItem.Name = "rotateViewClockwiseToolStripMenuItem";
+            this.rotateViewClockwiseToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.rotateViewClockwiseToolStripMenuItem.Text = "Rotate view clockwise";
+            this.rotateViewClockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateViewClockwiseToolStripMenuItem_Click);
+            // 
+            // rotateViewCounterclockwiseToolStripMenuItem
+            // 
+            this.rotateViewCounterclockwiseToolStripMenuItem.Name = "rotateViewCounterclockwiseToolStripMenuItem";
+            this.rotateViewCounterclockwiseToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.rotateViewCounterclockwiseToolStripMenuItem.Text = "Rotate view counterclockwise";
+            this.rotateViewCounterclockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateViewCounterclockwiseToolStripMenuItem_Click);
             // 
             // textExtractionTabPage
             // 
@@ -1701,13 +1705,11 @@ namespace DocumentViewerDemo
             this.viewerToolStrip.ImageViewer = this.annotationViewer1;
             this.viewerToolStrip.Location = new System.Drawing.Point(0, 0);
             this.viewerToolStrip.Name = "viewerToolStrip";
-            this.viewerToolStrip.PageCount = 0;
             this.viewerToolStrip.PrintButtonEnabled = true;
             this.viewerToolStrip.ScanButtonEnabled = true;
             this.viewerToolStrip.Size = new System.Drawing.Size(391, 25);
             this.viewerToolStrip.TabIndex = 2;
             this.viewerToolStrip.Text = "imageViewerToolStrip1";
-            this.viewerToolStrip.UseImageViewerImages = true;
             this.viewerToolStrip.OpenFile += new System.EventHandler(this.openToolStripMenuItem_Click);
             this.viewerToolStrip.SaveFile += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             this.viewerToolStrip.Scan += new System.EventHandler(this.scanViewerToolStripButton_Click);
@@ -1719,7 +1721,6 @@ namespace DocumentViewerDemo
             this.visualToolsToolStrip1.Enabled = false;
             this.visualToolsToolStrip1.ImageViewer = this.annotationViewer1;
             this.visualToolsToolStrip1.Location = new System.Drawing.Point(391, 0);
-            this.visualToolsToolStrip1.MandatoryVisualTool = null;
             this.visualToolsToolStrip1.Name = "visualToolsToolStrip1";
             this.visualToolsToolStrip1.Size = new System.Drawing.Size(35, 25);
             this.visualToolsToolStrip1.TabIndex = 2;
@@ -1847,24 +1848,19 @@ namespace DocumentViewerDemo
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // toolStripSeparator21
+            // annotationEraserToolStripMenuItem
             // 
-            this.toolStripSeparator21.Name = "toolStripSeparator21";
-            this.toolStripSeparator21.Size = new System.Drawing.Size(232, 6);
+            this.annotationEraserToolStripMenuItem.Name = "annotationEraserToolStripMenuItem";
+            this.annotationEraserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.annotationEraserToolStripMenuItem.Text = "Annotation eraser";
+            this.annotationEraserToolStripMenuItem.Click += new System.EventHandler(this.annotationEraserToolStripMenuItem_Click);
             // 
-            // rotateViewClockwiseToolStripMenuItem
+            // pencilEraserToolStripMenuItem
             // 
-            this.rotateViewClockwiseToolStripMenuItem.Name = "rotateViewClockwiseToolStripMenuItem";
-            this.rotateViewClockwiseToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.rotateViewClockwiseToolStripMenuItem.Text = "Rotate view clockwise";
-            this.rotateViewClockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateViewClockwiseToolStripMenuItem_Click);
-            // 
-            // rotateViewCounterclockwiseToolStripMenuItem
-            // 
-            this.rotateViewCounterclockwiseToolStripMenuItem.Name = "rotateViewCounterclockwiseToolStripMenuItem";
-            this.rotateViewCounterclockwiseToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.rotateViewCounterclockwiseToolStripMenuItem.Text = "Rotate view counterclockwise";
-            this.rotateViewCounterclockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateViewCounterclockwiseToolStripMenuItem_Click);
+            this.pencilEraserToolStripMenuItem.Name = "pencilEraserToolStripMenuItem";
+            this.pencilEraserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pencilEraserToolStripMenuItem.Text = "Pencil eraser";
+            this.pencilEraserToolStripMenuItem.Click += new System.EventHandler(this.pencilEraserToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1993,7 +1989,7 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.ToolStripMenuItem lineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem linesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem linesWithInterpolationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem freehandLinesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem polygonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem polygonWithInterpolationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem freehandPolygonToolStripMenuItem;
@@ -2096,5 +2092,7 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
         private System.Windows.Forms.ToolStripMenuItem rotateViewClockwiseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotateViewCounterclockwiseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem annotationEraserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pencilEraserToolStripMenuItem;
     }
 }

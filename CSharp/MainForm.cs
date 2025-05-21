@@ -93,7 +93,7 @@ namespace DocumentViewerDemo
         string _sourceFilename = null;
 
         /// <summary>
-        /// Determines that file is opened in read-only mode.
+        /// A value indicating whether file is opened in read-only mode.
         /// </summary>
         bool _isFileReadOnlyMode = false;
 
@@ -464,7 +464,7 @@ namespace DocumentViewerDemo
             _toolStripMenuItemToAnnotationType.Add(lineToolStripMenuItem, AnnotationType.Line);
             _toolStripMenuItemToAnnotationType.Add(linesToolStripMenuItem, AnnotationType.Lines);
             _toolStripMenuItemToAnnotationType.Add(linesWithInterpolationToolStripMenuItem, AnnotationType.LinesWithInterpolation);
-            _toolStripMenuItemToAnnotationType.Add(freehandLinesToolStripMenuItem, AnnotationType.FreehandLines);
+            _toolStripMenuItemToAnnotationType.Add(inkToolStripMenuItem, AnnotationType.Ink);
             _toolStripMenuItemToAnnotationType.Add(polygonToolStripMenuItem, AnnotationType.Polygon);
             _toolStripMenuItemToAnnotationType.Add(polygonWithInterpolationToolStripMenuItem, AnnotationType.PolygonWithInterpolation);
             _toolStripMenuItemToAnnotationType.Add(freehandPolygonToolStripMenuItem, AnnotationType.FreehandPolygon);
@@ -1760,7 +1760,7 @@ namespace DocumentViewerDemo
         #region Annotation interaction mode
 
         /// <summary>
-        /// Changes the annotation interaction mode to None.
+        /// Changes the annotation interaction mode to the "None" mode.
         /// </summary>
         private void noneToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1768,7 +1768,7 @@ namespace DocumentViewerDemo
         }
 
         /// <summary>
-        /// Changes the annotation interaction mode to View.
+        /// Changes the annotation interaction mode to the "View" mode.
         /// </summary>
         private void viewToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -1776,11 +1776,27 @@ namespace DocumentViewerDemo
         }
 
         /// <summary>
-        /// Changes the annotation interaction mode to Author.
+        /// Changes the annotation interaction mode to the "Author" mode.
         /// </summary>
         private void authorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             annotationViewer1.AnnotationInteractionMode = AnnotationInteractionMode.Author;
+        }
+
+        /// <summary>
+        /// Changes the annotation interaction mode to the "Annotation eraser" mode.
+        /// </summary>
+        private void annotationEraserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationViewer1.AnnotationInteractionMode = AnnotationInteractionMode.AnnotationEraser;
+        }
+
+        /// <summary>
+        /// Changes the annotation interaction mode to the "Pencil eraser" mode.
+        /// </summary>
+        private void pencilEraserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationViewer1.AnnotationInteractionMode = AnnotationInteractionMode.PencilEraser;
         }
 
         #endregion
@@ -2421,6 +2437,8 @@ namespace DocumentViewerDemo
             noneToolStripMenuItem.Checked = false;
             viewToolStripMenuItem1.Checked = false;
             authorToolStripMenuItem.Checked = false;
+            annotationEraserToolStripMenuItem.Checked = false;
+            pencilEraserToolStripMenuItem.Checked = false;
 
             AnnotationInteractionMode annotationInteractionMode = e.NewValue;
             switch (annotationInteractionMode)
@@ -2435,6 +2453,14 @@ namespace DocumentViewerDemo
 
                 case AnnotationInteractionMode.Author:
                     authorToolStripMenuItem.Checked = true;
+                    break;
+
+                case AnnotationInteractionMode.AnnotationEraser:
+                    annotationEraserToolStripMenuItem.Checked = true;
+                    break;
+
+                case AnnotationInteractionMode.PencilEraser:
+                    pencilEraserToolStripMenuItem.Checked = true;
                     break;
             }
 
