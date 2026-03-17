@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Vintasoft.Imaging.Text;
 using Vintasoft.Imaging.UI.VisualTools;
 
-namespace DemosCommonCode.Imaging
+namespace CommonCode.Imaging
 {
     /// <summary>
     /// A form that allows to set settings for text search.

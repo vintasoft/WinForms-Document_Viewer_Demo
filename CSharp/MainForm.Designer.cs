@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Vintasoft.Imaging.UI;
 
 namespace DocumentViewerDemo
@@ -197,18 +197,18 @@ namespace DocumentViewerDemo
             this.rotateViewClockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotateViewCounterclockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textExtractionTabPage = new System.Windows.Forms.TabPage();
-            this.textSelectionControl1 = new DemosCommonCode.Imaging.TextSelectionControl();
+            this.textSelectionControl1 = new CommonCode.Imaging.TextSelectionControl();
             this.annotationsTabPage = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.annotationPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.annotationComboBox = new System.Windows.Forms.ComboBox();
             this.commentsTabPage = new System.Windows.Forms.TabPage();
-            this.annotationCommentsControl1 = new DemosCommonCode.Annotation.AnnotationCommentsControl();
+            this.annotationCommentsControl1 = new CommonCode.Annotation.AnnotationCommentsControl();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.viewerToolStrip = new DemosCommonCode.Imaging.ImageViewerToolStrip();
-            this.visualToolsToolStrip1 = new DemosCommonCode.Imaging.VisualToolsToolStrip();
-            this.findTextToolStrip1 = new DemosCommonCode.Imaging.FindTextToolStrip();
-            this.annotationsToolStrip1 = new DemosCommonCode.Annotation.AnnotationsToolStrip();
+            this.viewerToolStrip = new CommonCode.Imaging.ImageViewerToolStrip();
+            this.visualToolsToolStrip1 = new CommonCode.Imaging.VisualToolsToolStrip();
+            this.findTextToolStrip1 = new CommonCode.Imaging.FindTextToolStrip();
+            this.annotationsToolStrip1 = new CommonCode.Annotation.AnnotationsToolStrip();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.actionLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -2019,8 +2019,8 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.ToolStripMenuItem scale400ToolStripMenuItem;
         private Vintasoft.Imaging.Annotation.UI.AnnotationViewer annotationViewer1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private DemosCommonCode.Imaging.ImageViewerToolStrip viewerToolStrip;
-        private DemosCommonCode.Imaging.VisualToolsToolStrip visualToolsToolStrip1;
+        private CommonCode.Imaging.ImageViewerToolStrip viewerToolStrip;
+        private CommonCode.Imaging.VisualToolsToolStrip visualToolsToolStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TabControl toolsTabControl;
         private System.Windows.Forms.TabPage pagesTabPage;
@@ -2033,7 +2033,7 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.ToolStripProgressBar progressBarImageLoading;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelLoadingImage;
         private System.Windows.Forms.ToolStripStatusLabel imageInfoStatusLabel;
-        private DemosCommonCode.Annotation.AnnotationsToolStrip annotationsToolStrip1;
+        private CommonCode.Annotation.AnnotationsToolStrip annotationsToolStrip1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -2050,7 +2050,7 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.PropertyGrid annotationPropertyGrid;
         private System.Windows.Forms.ComboBox annotationComboBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private DemosCommonCode.Imaging.TextSelectionControl textSelectionControl1;
+        private CommonCode.Imaging.TextSelectionControl textSelectionControl1;
         private System.Windows.Forms.ToolStripMenuItem bringToBackToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripMenuItem bringToFrontToolStripMenuItem;
@@ -2060,7 +2060,7 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.ToolStripMenuItem saveImageWithAnnotationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyImageToClipboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteImageToolStripMenuItem;
-        private DemosCommonCode.Imaging.FindTextToolStrip findTextToolStrip1;
+        private CommonCode.Imaging.FindTextToolStrip findTextToolStrip1;
         private System.Windows.Forms.ToolStripMenuItem findTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem mainVisualToolStripMenuItem;
@@ -2071,7 +2071,7 @@ namespace DocumentViewerDemo
         private System.Windows.Forms.ToolStripMenuItem documentMetadataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.TabPage commentsTabPage;
-        private DemosCommonCode.Annotation.AnnotationCommentsControl annotationCommentsControl1;
+        private CommonCode.Annotation.AnnotationCommentsControl annotationCommentsControl1;
         private System.Windows.Forms.ToolStripMenuItem rotateViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotateClockwiseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotateCounterclockwiseToolStripMenuItem;

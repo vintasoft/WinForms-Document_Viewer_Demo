@@ -7,7 +7,7 @@ using Vintasoft.Imaging.Text;
 using Vintasoft.Imaging.UI;
 using Vintasoft.Imaging.UI.VisualTools;
 
-namespace DemosCommonCode.Imaging
+namespace CommonCode.Imaging
 {
     /// <summary>
     /// Tool strip that allows to search text in a document document.

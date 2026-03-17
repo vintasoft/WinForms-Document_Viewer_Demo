@@ -29,17 +29,17 @@ using Vintasoft.Imaging.Annotation.Print;
 using Vintasoft.Imaging.Annotation.UI;
 using Vintasoft.Imaging.Annotation.UI.VisualTools;
 
-using DemosCommonCode;
-using DemosCommonCode.Annotation;
-using DemosCommonCode.Imaging;
-using DemosCommonCode.Imaging.Codecs;
-using DemosCommonCode.Imaging.ColorManagement;
-using DemosCommonCode.Office;
+using CommonCode;
+using CommonCode.Annotation;
+using CommonCode.Imaging;
+using CommonCode.Imaging.Codecs;
+using CommonCode.Imaging.ColorManagement;
+using CommonCode.Office;
 #if !REMOVE_PDF_PLUGIN
-using DemosCommonCode.Pdf;
+using CommonCode.Pdf;
 #endif
-using DemosCommonCode.Spelling;
-using DemosCommonCode.Twain;
+using CommonCode.Spelling;
+using CommonCode.Twain;
 using Vintasoft.Imaging.Annotation.Comments;
 using Vintasoft.Imaging.Annotation.UI.Comments;
 
@@ -227,7 +227,7 @@ namespace DocumentViewerDemo
 #if !REMOVE_OFFICE_PLUGIN
             AnnotationOfficeUIAssembly.Init();
 
-            DemosCommonCode.Office.OfficeDocumentVisualEditorForm documentVisualEditorForm = new DemosCommonCode.Office.OfficeDocumentVisualEditorForm();
+            OfficeDocumentVisualEditorForm documentVisualEditorForm = new OfficeDocumentVisualEditorForm();
             documentVisualEditorForm.Owner = this;
             documentVisualEditorForm.AddVisualTool(annotationViewer1.AnnotationVisualTool);
 #endif

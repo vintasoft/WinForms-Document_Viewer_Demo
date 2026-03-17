@@ -4,10 +4,10 @@ using System.IO;
 
 using Vintasoft.Imaging.Pdf;
 
-using DemosCommonCode.Pdf.Security;
+using CommonCode.Pdf.Security;
 
 
-namespace DemosCommonCode.Pdf
+namespace CommonCode.Pdf
 {
     /// <summary>
     /// Allows to enable PDF document authentication in PDF demos.

@@ -11,7 +11,7 @@ namespace DocumentViewerDemo
         [STAThread]
         static void Main()
         {
-            DemosCommonCode.DemosTools.EnableLicenseExceptionDisplaying();
+            CommonCode.DemosTools.EnableLicenseExceptionDisplaying();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

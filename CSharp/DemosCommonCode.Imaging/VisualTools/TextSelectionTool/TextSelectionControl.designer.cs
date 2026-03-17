@@ -1,4 +1,4 @@
-namespace DemosCommonCode.Imaging
+﻿namespace CommonCode.Imaging
 {
     partial class TextSelectionControl
     {
@@ -46,7 +46,7 @@ namespace DemosCommonCode.Imaging
             this.pageLocationLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.symbolColorPanelControl = new DemosCommonCode.CustomControls.ColorPanelControl();
+            this.symbolColorPanelControl = new CommonCode.CustomControls.ColorPanelControl();
             this.renderingModeLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.contentCodeLabel = new System.Windows.Forms.Label();
@@ -785,7 +785,7 @@ namespace DemosCommonCode.Imaging
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button saveAsTextButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private DemosCommonCode.CustomControls.ColorPanelControl symbolColorPanelControl;
+        private CommonCode.CustomControls.ColorPanelControl symbolColorPanelControl;
         private System.Windows.Forms.Label renderingModeLabel;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label contentCodeLabel;
