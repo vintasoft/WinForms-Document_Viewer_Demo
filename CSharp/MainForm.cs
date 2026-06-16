@@ -207,6 +207,35 @@ namespace DocumentViewerDemo
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes the <see cref="MainForm"/> class.
+        /// </summary>
+        static MainForm()
+        {
+            Jbig2AssemblyLoader.Load();
+            Jpeg2000AssemblyLoader.Load();
+            PdfAnnotationsAssemblyLoader.Load();
+            DocxAssemblyLoader.Load();
+            DicomAssemblyLoader.Load();
+            RawAssemblyLoader.Load();
+            WsiCodecAssemblyLoader.Load();
+            CadCodecAssemblyLoader.Load();
+
+            ImagingTypeEditorRegistrator.Register();
+            AnnotationTypeEditorRegistrator.Register();
+
+#if !REMOVE_OFFICE_PLUGIN
+            AnnotationOfficeUIAssembly.Init();
+#endif
+
+            // set CustomFontProgramsController for all opened documents
+            CustomFontProgramsController.SetDefaultFontProgramsController();
+        }
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainForm"/> class.
+        /// </summary>
         public MainForm()
         {
             // register the evaluation license for VintaSoft Imaging .NET SDK
@@ -214,26 +243,12 @@ namespace DocumentViewerDemo
 
             InitializeComponent();
 
-            Jbig2AssemblyLoader.Load();
-            Jpeg2000AssemblyLoader.Load();
-            PdfAnnotationsAssemblyLoader.Load();
-            DocxAssemblyLoader.Load();
-            DicomAssemblyLoader.Load();
-            RawAssemblyLoader.Load();
-
-            ImagingTypeEditorRegistrator.Register();
-            AnnotationTypeEditorRegistrator.Register();
 
 #if !REMOVE_OFFICE_PLUGIN
-            AnnotationOfficeUIAssembly.Init();
-
             OfficeDocumentVisualEditorForm documentVisualEditorForm = new OfficeDocumentVisualEditorForm();
             documentVisualEditorForm.Owner = this;
             documentVisualEditorForm.AddVisualTool(annotationViewer1.AnnotationVisualTool);
 #endif
-
-            // set CustomFontProgramsController for all opened documents
-            CustomFontProgramsController.SetDefaultFontProgramsController();
 
             InitAddAnnotationMenuItems();
 
