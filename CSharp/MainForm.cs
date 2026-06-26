@@ -226,6 +226,7 @@ namespace DocumentViewerDemo
 
 #if !REMOVE_OFFICE_PLUGIN
             AnnotationOfficeUIAssembly.Init();
+            XlsxConverterSettings.Default.ColumnAutoFit = true;
 #endif
 
             // set CustomFontProgramsController for all opened documents
