@@ -26,8 +26,10 @@ using Vintasoft.Imaging.Annotation.Pdf.Print;
 #else
 using Vintasoft.Imaging.Annotation.Print;
 #endif
+using Vintasoft.Imaging.Annotation.Comments;
 using Vintasoft.Imaging.Annotation.UI;
 using Vintasoft.Imaging.Annotation.UI.VisualTools;
+using Vintasoft.Imaging.Annotation.UI.Comments;
 
 using CommonCode;
 using CommonCode.Annotation;
@@ -40,9 +42,7 @@ using CommonCode.Pdf;
 #endif
 using CommonCode.Spelling;
 using CommonCode.Twain;
-using Vintasoft.Imaging.Annotation.Comments;
-using Vintasoft.Imaging.Annotation.UI.Comments;
-
+using System.Threading;
 
 namespace DocumentViewerDemo
 {
@@ -191,16 +191,6 @@ namespace DocumentViewerDemo
         /// </summary>
         CommentVisualTool _commentVisualTool;
 
-        /// <summary>
-        /// Manages the layout settings of DOCX document image collections.
-        /// </summary>
-        ImageCollectionDocxLayoutSettingsManager _imageCollectionDocxLayoutSettingsManager;
-
-        /// <summary>
-        /// Manages the layout settings of XLSX document image collections.
-        /// </summary>
-        ImageCollectionXlsxLayoutSettingsManager _imageCollectionXlsxLayoutSettingsManager;
-
         #endregion
 
 
@@ -220,6 +210,7 @@ namespace DocumentViewerDemo
             RawAssemblyLoader.Load();
             WsiCodecAssemblyLoader.Load();
             CadCodecAssemblyLoader.Load();
+            EmailCodecAssemblyLoader.Load();
 
             ImagingTypeEditorRegistrator.Register();
             AnnotationTypeEditorRegistrator.Register();
@@ -362,17 +353,16 @@ namespace DocumentViewerDemo
             // init visual tools
             InitVisualToolsToolStrip();
 
-#if !REMOVE_OFFICE_PLUGIN
-            // specify that image collection of annotation viewer  must handle layout settings requests
-            _imageCollectionDocxLayoutSettingsManager = new ImageCollectionDocxLayoutSettingsManager(annotationViewer1.Images);
-            _imageCollectionXlsxLayoutSettingsManager = new ImageCollectionXlsxLayoutSettingsManager(annotationViewer1.Images);
-#endif
-
 #if REMOVE_OFFICE_PLUGIN
             documentLayoutSettingsToolStripMenuItem.Visible = false;
 #endif
 
             DocumentPasswordForm.EnableAuthentication(annotationViewer1);
+
+            // specify that SDK can download external resources when loading a document
+            ImagingEnvironment.ExternalResourceManager.AllowAccessToExternalResources = true;
+            // subscribe to the ExternalResourceManager.CreatingResourceStream event
+            ImagingEnvironment.ExternalResourceManager.CreatingResourceStream += ExternalResourceManager_CreatingResourceStream;
         }
 
         #endregion
@@ -592,9 +582,9 @@ namespace DocumentViewerDemo
             _thumbnailViewerPrintManager = new ImageViewerPrintManager(
                 thumbnailViewer1, annotatedImagePrintDocument, printDialog1);
 
-            _thumbnailViewerPrintManager.PrintDocument.UseImageAutoOrienation = false;
+            _thumbnailViewerPrintManager.PrintDocument.UseImageAutoOrientation = false;
             _thumbnailViewerPrintManager.PrintDocument.Center = true;
-            pageAutoOrientationToolStripMenuItem.Checked = _thumbnailViewerPrintManager.PrintDocument.UseImageAutoOrienation;
+            pageAutoOrientationToolStripMenuItem.Checked = _thumbnailViewerPrintManager.PrintDocument.UseImageAutoOrientation;
             centerPrintingPageToolStripMenuItem.Checked = _thumbnailViewerPrintManager.PrintDocument.Center;
         }
 
@@ -844,6 +834,8 @@ namespace DocumentViewerDemo
             moveAnnotationsBetweenImagesToolStripMenuItem.Enabled =
                 annotationViewer1.DisplayMode != ImageViewerDisplayMode.SinglePage;
             documentMetadataToolStripMenuItem.Enabled = !isFileEmpty;
+            imageMetadataToolStripMenuItem.Enabled = isImageSelected;
+
 
             // update "View => Image Display Mode" menu
             singlePageToolStripMenuItem.Checked = false;
@@ -990,6 +982,18 @@ namespace DocumentViewerDemo
         }
 
         /// <summary>
+        /// Handles the Click event of addWithPreviewToolStripMenuItem object.
+        /// </summary>
+        private void addWithPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ImagePreviewForm form = new ImagePreviewForm())
+            {
+                form.DestImagesManager = _imagesManager;
+                form.ShowDialog();
+            }
+        }
+
+        /// <summary>
         /// Adds image(s) to an image collection of annotation viewer.
         /// </summary>
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1022,7 +1026,11 @@ namespace DocumentViewerDemo
         /// </summary>
         private void docxLayoutSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _imageCollectionDocxLayoutSettingsManager.EditLayoutSettingsUseDialog();
+#if !REMOVE_OFFICE_PLUGIN            
+            // create dialog with necessary layout settings
+            using (DocumentLayoutSettingsDialog dialog = new DocxLayoutSettingsDialog(annotationViewer1.Images))
+                dialog.ShowDialog();
+#endif
         }
 
         /// <summary>
@@ -1030,7 +1038,33 @@ namespace DocumentViewerDemo
         /// </summary>
         private void xlsxLayoutSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _imageCollectionXlsxLayoutSettingsManager.EditLayoutSettingsUseDialog();
+#if !REMOVE_OFFICE_PLUGIN            
+            // create dialog with necessary layout settings
+            using (DocumentLayoutSettingsDialog dialog = new XlsxLayoutSettingsDialog(annotationViewer1.Images))
+                dialog.ShowDialog();
+#endif
+        }
+
+        /// <summary>
+        /// Handles the Click event of htmlToolStripMenuItem object.
+        /// </summary>
+        private void htmlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // create dialog with necessary layout settings
+            using (DocumentLayoutSettingsDialog dialog = new HtmlLayoutSettingsDialog(annotationViewer1.Images))
+                dialog.ShowDialog();
+        }
+
+        /// <summary>
+        /// Handles the Click event of emailToolStripMenuItem object.
+        /// </summary>
+        private void emailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+#if !REMOVE_EMAIL_CODEC
+            // create dialog with necessary layout settings
+            using (DocumentLayoutSettingsDialog dialog = new EmailLayoutSettingsDialog(annotationViewer1.Images))
+                dialog.ShowDialog();
+#endif
         }
 
         /// <summary>
@@ -1075,8 +1109,8 @@ namespace DocumentViewerDemo
         /// </summary>
         private void pageAutoOrientationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool value = !_thumbnailViewerPrintManager.PrintDocument.UseImageAutoOrienation;
-            _thumbnailViewerPrintManager.PrintDocument.UseImageAutoOrienation = value;
+            bool value = !_thumbnailViewerPrintManager.PrintDocument.UseImageAutoOrientation;
+            _thumbnailViewerPrintManager.PrintDocument.UseImageAutoOrientation = value;
             pageAutoOrientationToolStripMenuItem.Checked = value;
         }
         /// <summary>
@@ -1130,7 +1164,7 @@ namespace DocumentViewerDemo
             Application.Exit();
         }
 
-        #endregion
+#endregion
 
 
         #region 'Edit' menu
@@ -1588,6 +1622,30 @@ namespace DocumentViewerDemo
             {
                 MessageBox.Show("File does not contain metadata.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        /// <summary>
+        /// Handles the Click event of imageMetadataToolStripMenuItem object.
+        /// </summary>
+        private void imageMetadataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = null;
+
+            try
+            {
+                // show a form for editing image metadata
+                MetadataEditorForm editorForm = new MetadataEditorForm();
+                editorForm.Image = annotationViewer1.Image;
+                form = editorForm;
+
+                form.ShowDialog();
+            }
+            finally
+            {
+                form.Dispose();
+            }
+
+            UpdateUI();
         }
 
         /// <summary>
@@ -2819,6 +2877,26 @@ namespace DocumentViewerDemo
                 CloseCurrentFile();
         }
 
+        /// <summary>
+        /// Handles the CreatingResourceStream event of the ExternalResourceManager.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="ExternalResourceStreamEventArgs"/> instance containing the event data.</param>
+        private void ExternalResourceManager_CreatingResourceStream(object sender, ExternalResourceStreamEventArgs e)
+        {
+            if (!e.Uri.IsFile)
+                Invoke(new ParameterizedThreadStart(SetStatus), string.Format("Downloading file '{0}'...", e.Uri));
+        }
+
+        /// <summary>
+        /// Sets the status.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        private void SetStatus(object text)
+        {
+            imageInfoStatusLabel.Text = text.ToString();
+        }
+
         #endregion
 
 
@@ -3506,6 +3584,11 @@ namespace DocumentViewerDemo
                     actionLabel.Text = string.Format("Open URL: '{0}'", ((UriActionMetadata)action).Uri);
                     actionLabel.Visible = true;
                 }
+                else if (action is ResourceActionMetadata)
+                {
+                    actionLabel.Text = string.Format("Embedded resource: '{0}'", ((ResourceActionMetadata)action).ResourceUri);
+                    actionLabel.Visible = true;
+                }
                 else if (action is LaunchActionMetadata)
                 {
                     actionLabel.Text = string.Format("Launch Application: '{0}'", ((LaunchActionMetadata)action).CommandLine);
@@ -3545,7 +3628,7 @@ namespace DocumentViewerDemo
 
         #endregion
 
-        #endregion
+#endregion
 
 
 
@@ -3562,7 +3645,9 @@ namespace DocumentViewerDemo
         private delegate void SavingProgressDelegate(object sender, ProgressEventArgs e);
 
 
+
         #endregion
 
+       
     }
 }

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net11.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
@@ -12,7 +12,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
     <EnableDefaultItems>false</EnableDefaultItems>
-    <Version>15.1.9.1</Version>
+    <Version>15.2.0.1</Version>
     <AssemblyName>DocumentViewerDemo</AssemblyName>
     <RootNamespace>DocumentViewerDemo</RootNamespace>
     <StartupObject>DocumentViewerDemo.Program</StartupObject>
@@ -31,43 +31,42 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
-    <PackageReference Include="System.IO.Packaging" Version="9.0.0" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.0" />
+    <PackageReference Include="OpenMcdf" Version="3.1.4" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Reference Include="Jint.Vintasoft">
-      <HintPath>.\Jint.Vintasoft\DotNet9\Jint.Vintasoft.dll</HintPath>
+      <HintPath>.\Jint.Vintasoft\DotNet11\Jint.Vintasoft.dll</HintPath>
     </Reference>
     <Reference Include="NHunspell">
-      <HintPath>.\NHunspell\DotNet9\NHunspell.dll</HintPath>
+      <HintPath>.\NHunspell\DotNet11\NHunspell.dll</HintPath>
     </Reference>
-    <PackageReference Include="Vintasoft.Imaging" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.CadCodec" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Office" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Office.UI" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf.UI" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.UI" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Dicom" Version="8.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="10.1.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="12.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="10.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.JavaScript" Version="12.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Mrc" Version="12.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.UI" Version="12.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.RawCodec" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Shared" Version="4.6.3.1" />
-    <PackageReference Include="Vintasoft.Twain" Version="15.4.0.1" />
-    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="15.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.WsiCodec" Version="15.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.CadCodec" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.EmailCodec" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Office" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Office.UI" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf.UI" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.UI" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Dicom" Version="8.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="10.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="12.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="10.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.JavaScript" Version="12.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Mrc" Version="12.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.UI" Version="12.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.RawCodec" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Shared" Version="4.7.0.1" />
+    <PackageReference Include="Vintasoft.Twain" Version="15.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="15.2.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.WsiCodec" Version="15.2.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControls\AnchorTypeEditorControl.cs">
@@ -220,6 +219,8 @@
     </Compile>
     <Compile Include="DemosCommonCode.Imaging\AssembliesLoader\DocxAssemblyLoader.cs">
     </Compile>
+    <Compile Include="DemosCommonCode.Imaging\AssembliesLoader\EmailCodecAssemblyLoader.cs">
+    </Compile>
     <Compile Include="DemosCommonCode.Imaging\AssembliesLoader\Jbig2AssemblyLoader.cs">
     </Compile>
     <Compile Include="DemosCommonCode.Imaging\AssembliesLoader\Jpeg2000AssemblyLoader.cs">
@@ -363,11 +364,17 @@
     <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\DocxLayoutSettingsDialog.designer.cs">
       <DependentUpon>DocxLayoutSettingsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionDocxLayoutSettingsManager.cs">
+    <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\EmailLayoutSettingsDialog.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionLayoutSettingsManager.cs">
+    <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\EmailLayoutSettingsDialog.Designer.cs">
+      <DependentUpon>EmailLayoutSettingsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\ImageCollectionXlsxLayoutSettingsManager.cs">
+    <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\HtmlLayoutSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\HtmlLayoutSettingsDialog.Designer.cs">
+      <DependentUpon>HtmlLayoutSettingsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="DemosCommonCode.Imaging\DocumentLayoutSettings\PageLayoutSettingsControl.cs">
       <SubType>UserControl</SubType>
@@ -394,6 +401,12 @@
       <DependentUpon>DocumentPasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DemosCommonCode.Imaging\Fonts\CustomFontProgramsController.cs">
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\ImagePreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\ImagePreviewForm.Designer.cs">
+      <DependentUpon>ImagePreviewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DemosCommonCode.Imaging\ImageViewerPrintManager.cs">
     </Compile>
@@ -422,6 +435,28 @@
     </Compile>
     <Compile Include="DemosCommonCode.Imaging\ImageViewer\ImageViewerSettingsForm.designer.cs">
       <DependentUpon>ImageViewerSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\MetadataEditor\MetadataEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\MetadataEditor\MetadataEditorForm.Designer.cs">
+      <DependentUpon>MetadataEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\MetadataEditor\MetadataTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\MetadataEditor\MetadataTreeView.Designer.cs">
+      <DependentUpon>MetadataTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\MetadataEditor\MethodExecutor.cs">
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\MetadataEditor\Tiff\AddTiffTagForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\MetadataEditor\Tiff\AddTiffTagForm.Designer.cs">
+      <DependentUpon>AddTiffTagForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DemosCommonCode.Imaging\MetadataEditor\Tiff\TiffTagMetadataConverter.cs">
     </Compile>
     <Compile Include="DemosCommonCode.Imaging\PropertyGridForm.cs">
       <SubType>Form</SubType>
@@ -774,6 +809,12 @@
     <EmbeddedResource Include="DemosCommonCode.Imaging\DocumentLayoutSettings\DocxLayoutSettingsDialog.resx">
       <DependentUpon>DocxLayoutSettingsDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DemosCommonCode.Imaging\DocumentLayoutSettings\EmailLayoutSettingsDialog.resx">
+      <DependentUpon>EmailLayoutSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemosCommonCode.Imaging\DocumentLayoutSettings\HtmlLayoutSettingsDialog.resx">
+      <DependentUpon>HtmlLayoutSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DemosCommonCode.Imaging\DocumentLayoutSettings\PageLayoutSettingsControl.resx">
       <DependentUpon>PageLayoutSettingsControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -785,6 +826,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DemosCommonCode.Imaging\DocumentPasswordForm.resx">
       <DependentUpon>DocumentPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemosCommonCode.Imaging\ImagePreviewForm.resx">
+      <DependentUpon>ImagePreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DemosCommonCode.Imaging\ImageViewerToolStrip\ImageViewerToolStrip.resx">
       <DependentUpon>ImageViewerToolStrip.cs</DependentUpon>
@@ -800,6 +844,12 @@
     <EmbeddedResource Include="DemosCommonCode.Imaging\ImageViewer\ImageViewerSettingsForm.resx">
       <DependentUpon>ImageViewerSettingsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemosCommonCode.Imaging\MetadataEditor\MetadataEditorForm.resx">
+      <DependentUpon>MetadataEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemosCommonCode.Imaging\MetadataEditor\Tiff\AddTiffTagForm.resx">
+      <DependentUpon>AddTiffTagForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DemosCommonCode.Imaging\PropertyGridForm.resx">
       <DependentUpon>PropertyGridForm.cs</DependentUpon>
@@ -1231,15 +1281,15 @@
     <Content Include="DemosCommonCode.Office\OfficeDocumentVisualEditorToolStrip\Icons\UnderlinedText.png">
     </Content>
     <Content Include="App.ico" />
-    <Content Include="Resources\DotNet9\VintasoftTwainService.exe">
+    <Content Include="Resources\DotNet11\VintasoftTwainService.exe">
       <Link>VintasoftTwainService.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DotNet9\VintasoftTwainService.dll">
+    <Content Include="Resources\DotNet11\VintasoftTwainService.dll">
       <Link>VintasoftTwainService.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DotNet9\VintasoftTwainService.runtimeconfig.json">
+    <Content Include="Resources\DotNet11\VintasoftTwainService.runtimeconfig.json">
       <Link>VintasoftTwainService.runtimeconfig.json</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
